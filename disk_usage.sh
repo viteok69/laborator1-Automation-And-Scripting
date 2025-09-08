@@ -16,7 +16,6 @@ if [ ! -d "$DIR" ]; then
   exit 1
 fi
 
-# Calculează spațiul utilizat în MB
 USAGE_MB=$(du -sm "$DIR" | awk '{print $1}')
 USAGE_PERCENT=$((USAGE_MB * 100 / MAX_MB))
 
@@ -26,3 +25,4 @@ if [ "$USAGE_PERCENT" -ge "$THRESHOLD" ]; then
   echo "Avertizare: Directorul $DIR a depășit pragul de $THRESHOLD% ($USAGE_PERCENT%)" \
   | mail -s "Avertizare spațiu disc" "$EMAIL"
 fi
+
